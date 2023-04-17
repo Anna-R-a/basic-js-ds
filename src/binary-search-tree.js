@@ -36,42 +36,42 @@ class BinarySearchTree {
     }
   }
 
-  has( data ) {
-    function hasNode(node, data){
-      if(!node){
-        return false;
-      } else if(data === node.data){
+  has(data) {
+    if(!this.rootNode){
+      return false;
+    }
+    let curr = this.rootNode;
+    while(true) { 
+      if (!curr) return false;
+      if(data === curr.data){
         return true;
-      } else if ( data > node.data ){
-        hasNode(node.right, data)
-      } else {
-        hasNode(node.left, data)
+      } 
+      if (data > curr.data){
+        curr = curr.right;
+        } else {
+          curr = curr.left;
+        }
       }
     }
-    return hasNode(this.rootNode, data);
-  }
 
-  find(data) {
-    
-      function findNode (node, data){
-      // if(!data){
-      // return null;
-      // }
-      if(node === null){
+    find(data) {
+      if(!this.rootNode){
         return null;
       }
-      if(node.data === data){
-        return node;
+      let curr = this.rootNode;
+      while(true) { 
+        if (!curr) return null;
+        if(data === curr.data){
+        return curr;
+        } 
+        if ( data > curr.data ){
+          curr = curr.right;
+          } else {
+            curr = curr.left;
+          }
+        }
       }
-      if (node.data < data){
-        findNode(node.right, data)
-      } else {
-        findNode(node.left, data)
-      }
-    }
-    
-    return findNode (this.rootNode, data);
-  }
+  
 
   remove(data) {
     this.rootNode = removeNode(this.rootNode, data);
