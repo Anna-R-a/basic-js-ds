@@ -22,17 +22,30 @@ const { ListNode } = require('../extensions/list-node.js');
  *   }
  * }
  */
-// class ListNode {
-//   constructor(x) {
-//     this.value = x;
-//     this.next = null;
-//   }
-// }
 
-// function removeKFromList( l, k ) {
-// let curr = this.head;
 
-// }
+function removeKFromList( l, k ) {
+  if(l === null){
+    return l;
+  }
+let curr = l;
+let prev = null;
+while(curr){
+  if(curr.value === k){
+    if (prev === null){
+    l = curr.next;
+    curr = l;
+    } else {
+      prev.next = curr.next;
+      curr = curr.next;
+    }
+  } else {
+    prev = curr;
+    curr = curr.next;
+  }
+}
+return l
+}
 
 module.exports = {
   removeKFromList

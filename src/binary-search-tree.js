@@ -9,9 +9,11 @@ const { Node } = require('../extensions/list-tree.js');
 class BinarySearchTree {
   constructor() {
     this.rootNode = null;
+
   }
   root() {
-    return this.rootNode
+    
+    return this.rootNode;
   }
 
   add(data) {
